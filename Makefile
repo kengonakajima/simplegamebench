@@ -1,7 +1,7 @@
 GOC=/Users/ringo/golang/go/bin/6g
 GOL=/Users/ringo/golang/go/bin/6l
 
-all: func rand vec
+all: func rand vec3
 
 
 

@@ -6,4 +6,4 @@ t=0
   t += fff(i)
 end
 
-print "ttt:#{t}"
+print "total:#{t}\n"

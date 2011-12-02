@@ -7,4 +7,4 @@ for i=0,100000000 do
    t = t + fff(i)
 end
 
-print("ttt:"..t)
+print("total:"..t)
