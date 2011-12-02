@@ -1,25 +1,30 @@
 simple game logic benchmark comparing lua,c,go,coffee,ruby
 ====
 
+測定内容
+----
 詳しくはMakefileを参照してください。
 
-func : 単純な関数を1億回呼ぶ
+- func : 単純な関数を1億回呼ぶ
+- rand : 単純なネイティブ関数を1億回呼ぶ
+- vec3 : 1万要素のVector3クラスの配列を作りメンバ関数を呼んで1億回平行移動する
 
-rand : 単純なネイティブ関数を1億回呼ぶ
 
-vec3 : 1万要素のVector3クラスの配列を作りメンバ関数を呼んで1億回平行移動する
-
-Result
+環境
 ---
-MacOSX 10.7 Lion
-2.53GHz core i5 macbook pro
-lua : 5.1.4
-luajit : 1.1.7
-juajit2 : 2.0.0beta8 (git latest 2011/12/2)
-node (coffee): 0.4.4 
-go : (hg latest 2011/12/2)
-ruby : 1.8.7 (Lion default)
-c : gcc 4.2 -O3 (Lion default)
+
+- MacOSX 10.7 Lion
+- 2.53GHz core i5 macbook pro
+- lua : 5.1.4
+- luajit : 1.1.7
+- juajit2 : 2.0.0beta8 (git latest 2011/12/2)
+- node (coffee): 0.4.4 
+- go : (hg latest 2011/12/2)
+- ruby : 1.8.7 (Lion default)
+- c : gcc 4.2 -O3 (Lion default)
+
+結果
+---
 
 - func
  - coffee   2.11 real         2.07 user         0.03 sys
@@ -51,10 +56,15 @@ c : gcc 4.2 -O3 (Lion default)
 
 考え
 ----
-luajitはnodeよりはるかに遅かった。が、 luajit2では遜色ないレベルになっている。
-テーブルにアクセスしない単純なロジックなら、ほとんどCに近い速度が出る。
-ネイティブ関数の呼び出しオーバーヘッドがv8より小さいことが数値で見えた。
-LuaはV8のようにC側で確保したオブジェクトをGCしてくれないので当然か。
+luajitはnodeよりはるかに遅かった。が、 luajit2では遜色ないレベルになっている。 
 
-goはやはり mapとstringがとても遅いので、あと一歩。ほかは速いのに。。
+テーブルにアクセスしない単純なロジックなら、ほとんどCに近い速度が出る。 
+
+ネイティブ関数の呼び出しオーバーヘッドがv8より小さいことが数値で見えた。 
+LuaはV8のようにC側で確保したオブジェクトをGCしてくれないので当然か。 
+
+goはやはり mapとstringがとても遅いので、あと一歩。ほかはすばらしく速いのに。。
+goで実装したライブラリが遅いということは、あまりよくないよな
+
+
 
